@@ -77,10 +77,15 @@
     /* ── MAIN ── */
     .main { max-width: 1160px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
 
-    /* ── COMMUNITY NOTICE ── */
-    .community-notice { background: var(--community-bg); border: 1px solid #FAD4A8; border-radius: 12px; padding: 0.875rem 1.125rem; margin-bottom: 1.5rem; display: none; gap: 10px; align-items: flex-start; font-size: 13.5px; color: var(--community-text); line-height: 1.55; }
-    .community-notice.visible { display: flex; }
-    .community-notice svg { flex-shrink: 0; margin-top: 1px; }
+    /* ── NOTICES ── */
+    .tab-notice { border-radius: 12px; padding: 0.875rem 1.125rem; margin-bottom: 1.5rem; display: none; gap: 10px; align-items: flex-start; font-size: 13.5px; line-height: 1.55; }
+    .tab-notice.visible { display: flex; }
+    .tab-notice svg { flex-shrink: 0; margin-top: 1px; }
+    .uva-notice { background: var(--academic-bg); border: 1px solid #BFCFE8; color: var(--academic-text); }
+    .community-notice { background: var(--community-bg); border: 1px solid #FAD4A8; color: var(--community-text); }
+    .notice-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .notice-chip { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 100px; background: rgba(255,255,255,0.65); }
+    .pill-uva { background: var(--academic-bg); color: var(--academic-text); }
 
     /* ── CARDS ── */
     .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
@@ -263,9 +268,21 @@
 <!-- MAIN -->
 <main class="main" id="tab-panel" role="tabpanel">
 
-  <div class="community-notice" id="community-notice">
+  <div class="tab-notice uva-notice visible" id="uva-notice">
+    <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <div>
+      All resources on this tab are <strong>free</strong> and available exclusively to <strong>currently enrolled UVA students.</strong> You will need your UVA computing ID (Netbadge) to register with most services. If you are not a UVA student, see the Community Resources tab for Charlottesville-area options open to all.
+      <div class="notice-chips">
+        <span class="notice-chip"><svg width="10" height="10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Free to enrolled students</span>
+        <span class="notice-chip"><svg width="10" height="10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>UVA Netbadge required</span>
+        <span class="notice-chip"><svg width="10" height="10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>No insurance needed</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-notice community-notice" id="community-notice">
     <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color:var(--community-dot)"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-    <span>Community resource details are gathered from public sources and may change. Fields marked <strong>Call to confirm</strong> couldn't be fully verified online; please call ahead for current hours, eligibility, and cost before visiting.</span>
+    <span>Community resource details are gathered from public sources and may change. Fields marked <strong>Call to confirm</strong> could not be fully verified online; please call ahead for current hours, eligibility, and cost before visiting.</span>
   </div>
 
   <section aria-label="Resources">
@@ -311,7 +328,7 @@
 <!-- FOOTER -->
 <footer class="site-footer">
   <div class="footer-inner">
-    <p class="footer-text">Built for EDIS 2020  · Data current as of Spring 2026 · <a href="https://github.com" style="color:inherit">View on GitHub</a></p>
+    <p class="footer-text">Built for EDHS / Disability Studies at UVA · Data current as of Spring 2025 · <a href="https://github.com" style="color:inherit">View on GitHub</a></p>
     <div class="footer-links">
       <a href="https://www.studenthealth.virginia.edu/SDAC" target="_blank" rel="noopener">SDAC</a>
       <a href="https://regionten.org" target="_blank" rel="noopener">Region Ten</a>
@@ -679,7 +696,7 @@ function openModal(r) {
       <div class="modal-grid">
         <div class="modal-field"><div class="modal-field-label">Diagnosis Required</div><div class="modal-field-value">${yesNoPill(r.accessRequirements.diagnosisRequired)}</div></div>
         <div class="modal-field"><div class="modal-field-label">Insurance Required</div><div class="modal-field-value">${yesNoPill(r.accessRequirements.insuranceRequired)}</div></div>
-        <div class="modal-field"><div class="modal-field-label">Enrollment Required</div><div class="modal-field-value">${yesNoPill(r.accessRequirements.enrolledRequired,'Enrollment Req.','Open to All')}</div></div>
+        <div class="modal-field"><div class="modal-field-label">Who Can Access</div><div class="modal-field-value">${r.accessRequirements.enrolledRequired ? '<span class="pill pill-uva">UVA Students Only</span>' : '<span class="pill pill-no">Open to All</span>'}</div></div>
         <div class="modal-field"><div class="modal-field-label">Cost</div><div class="modal-field-value">${costPill(r.accessRequirements.cost)}</div></div>
       </div>
     </div>
@@ -795,8 +812,10 @@ function switchTab(tab) {
   document.getElementById('search').value = '';
   document.querySelectorAll('.filter-btn[data-filter="no-diagnosis"], .filter-btn[data-filter="free-only"], .filter-btn[data-filter="available-now"]').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
   document.querySelectorAll('.tab-btn').forEach(b => { b.classList.toggle('active', b.dataset.tab===tab); b.setAttribute('aria-selected', String(b.dataset.tab===tab)); });
-  const notice = document.getElementById('community-notice');
-  if (tab === 'community') notice.classList.add('visible'); else notice.classList.remove('visible');
+  const uvaNotice = document.getElementById('uva-notice');
+  const communityNotice = document.getElementById('community-notice');
+  if (tab === 'community') { communityNotice.classList.add('visible'); uvaNotice.classList.remove('visible'); }
+  else { uvaNotice.classList.add('visible'); communityNotice.classList.remove('visible'); }
   buildDynamicFilters();
   updateHeaderStats();
   renderCards();
