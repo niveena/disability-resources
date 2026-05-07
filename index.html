@@ -224,6 +224,7 @@
     <div class="header-badge"><span></span>Charlottesville, Virginia</div>
     <h1 class="header-title">Disability <em>Resources</em> Guide</h1>
     <p class="header-desc">A centralized guide to disability resources at the University of Virginia and in the broader Charlottesville community. Hover any card for quick details; click for full information.</p>
+    <p class="header-desc" style="margin-top:-0.75rem;font-size:13.5px;color:var(--text-muted)">This is a best-effort resource guide compiled individually from public sources and direct outreach. Information may change; always confirm details with the organization directly. This site is actively expanding and new resources are being added; if you know of something that should be listed, please reach out.</p>
 
     <nav class="tab-nav" role="tablist" aria-label="Resource tabs">
       <button class="tab-btn active" data-tab="uva" role="tab" aria-selected="true">
@@ -328,7 +329,7 @@
 <!-- FOOTER -->
 <footer class="site-footer">
   <div class="footer-inner">
-    <p class="footer-text">Built for EDHS / Disability Studies at UVA · Data current as of Spring 2026 · <a href="https://github.com" style="color:inherit">View on GitHub</a></p>
+    <p class="footer-text">EDIS 2020· Data current as of Spring 2026 · <a href="https://github.com" style="color:inherit">View on GitHub</a></p>
     <div class="footer-links">
       <a href="https://www.studenthealth.virginia.edu/SDAC" target="_blank" rel="noopener">SDAC</a>
       <a href="https://regionten.org" target="_blank" rel="noopener">Region Ten</a>
@@ -426,7 +427,7 @@ const RESOURCES = [
   {
     id: 5,
     name: "UVA Captioning & Transcription Project",
-    description: "Provides real-time and post-production captioning and transcription for UVA courses, events, and media. Requests submitted via online form — no SDAC registration required for faculty requests.",
+    description: "Provides real-time and post-production captioning and transcription for UVA courses, events, and media. Requests submitted via online form, no SDAC registration required for faculty requests.",
     category: "Captioning & Transcription", categoryKey: "captioning", icon: "📝",
     callToConfirm: false,
     accessRequirements: { diagnosisRequired: false, insuranceRequired: false, enrolledRequired: false, cost: "free" },
@@ -480,7 +481,7 @@ const COMMUNITY_RESOURCES = [
   {
     id: 104,
     name: "Virginia DARS – Vocational Rehabilitation",
-    description: "The Virginia Dept. for Aging and Rehabilitative Services offers vocational rehabilitation — helping individuals with disabilities prepare for, obtain, and maintain employment. Also provides assistive technology loans and independent living services.",
+    description: "The Virginia Dept. for Aging and Rehabilitative Services offers vocational rehabilitation; helping individuals with disabilities prepare for, obtain, and maintain employment. Also provides assistive technology loans and independent living services.",
     category: "Vocational Rehabilitation", categoryKey: "rehabilitation", icon: "💼",
     callToConfirm: true,
     unverifiedNote: "DARS serves the Charlottesville region through its Staunton district. Call the statewide line (1-800-552-5019) to be connected to your local counselor and confirm the nearest office location.",
@@ -493,7 +494,7 @@ const COMMUNITY_RESOURCES = [
   {
     id: 105,
     name: "PVCC Disability Services",
-    description: "Piedmont Virginia Community College provides academic accommodations and support for enrolled PVCC students with disabilities. Separate from UVA — PVCC students must register with PVCC's own office regardless of any prior UVA registration.",
+    description: "Piedmont Virginia Community College provides academic accommodations and support for enrolled PVCC students with disabilities. Separate from UVA;  PVCC students must register with PVCC's own office regardless of any prior UVA registration.",
     category: "Academic Accommodations", categoryKey: "academic", icon: "🏫",
     callToConfirm: true,
     unverifiedNote: "Contact PVCC directly for current documentation requirements, registration process, and available accommodations. Services and procedures may differ significantly from UVA.",
@@ -521,8 +522,8 @@ const COMMUNITY_RESOURCES = [
 // ─── LAWS ─────────────────────────────────────────────────────
 const LAWS = [
   { year:"1990", name:"Americans with Disabilities Act (ADA)", yearColor:"#EBF2FB", yearText:"#1A4A82", description:"Landmark federal civil rights law prohibiting discrimination against individuals with disabilities in employment (Title I), state and local government (Title II), and public accommodations (Title III). Public universities like UVA fall under Title II and must ensure equal access to programs, services, and activities.", appliesTo:"All U.S. public universities, employers with 15+ employees, public accommodations, and state/local governments.", link:"https://www.ada.gov/", linkText:"ADA.gov →" },
-  { year:"1973", name:"Section 504 of the Rehabilitation Act", yearColor:"#E8F5EE", yearText:"#1A5C36", description:"Prohibits discrimination based on disability in programs receiving federal financial assistance — which includes virtually all U.S. universities. Requires reasonable accommodations and program accessibility. Students who don't qualify for IDEA services may still be protected under Section 504.", appliesTo:"Any program or activity receiving federal funding, including public and many private universities.", link:"https://www.hhs.gov/civil-rights/for-individuals/disability/index.html", linkText:"HHS Civil Rights →" },
-  { year:"1990", name:"IDEA – Individuals with Disabilities Education Act", yearColor:"#F0ECFB", yearText:"#4A1F8C", description:"Ensures students with disabilities ages 3–21 receive a Free Appropriate Public Education (FAPE) in the least restrictive environment. IDEA protections end at college entry — students transitioning to UVA shift from IDEA rights to ADA/Section 504, requiring self-advocacy rather than school-initiated services.", appliesTo:"K–12 public schools. Does not apply directly to higher education.", link:"https://sites.ed.gov/idea/", linkText:"U.S. Dept. of Ed. →" },
+  { year:"1973", name:"Section 504 of the Rehabilitation Act", yearColor:"#E8F5EE", yearText:"#1A5C36", description:"Prohibits discrimination based on disability in programs receiving federal financial assistance; which includes virtually all U.S. universities. Requires reasonable accommodations and program accessibility. Students who don't qualify for IDEA services may still be protected under Section 504.", appliesTo:"Any program or activity receiving federal funding, including public and many private universities.", link:"https://www.hhs.gov/civil-rights/for-individuals/disability/index.html", linkText:"HHS Civil Rights →" },
+  { year:"1990", name:"IDEA – Individuals with Disabilities Education Act", yearColor:"#F0ECFB", yearText:"#4A1F8C", description:"Ensures students with disabilities ages 3–21 receive a Free Appropriate Public Education (FAPE) in the least restrictive environment. IDEA protections end at college entry; students transitioning to UVA shift from IDEA rights to ADA/Section 504, requiring self-advocacy rather than school-initiated services.", appliesTo:"K–12 public schools. Does not apply directly to higher education.", link:"https://sites.ed.gov/idea/", linkText:"U.S. Dept. of Ed. →" },
   { year:"2008", name:"ADA Amendments Act (ADAAA)", yearColor:"#FEF3E8", yearText:"#8C3A0A", description:"Significantly broadened the ADA's definition of 'disability' after courts had narrowed it. The ADAAA clarified that mitigating measures (medications, hearing aids, etc.) should not affect disability status determinations, and expanded the list of 'major life activities' — making it easier for more individuals to qualify for protection.", appliesTo:"Same entities as the ADA — Titles I, II, and III.", link:"https://www.eeoc.gov/statutes/ada-amendments-act-2008", linkText:"EEOC →" },
   { year:"2020", name:"Virginia Human Rights Act (VHRA)", yearColor:"#E8F5F7", yearText:"#0F4F5C", description:"Virginia's state-level civil rights law, substantially strengthened in 2020, prohibiting disability discrimination in employment and housing. Includes a private right of action allowing individuals to sue and aligns closely with federal ADA standards.", appliesTo:"Virginia employers (15+ employees), housing providers, and public accommodations within the Commonwealth.", link:"https://www.doli.virginia.gov/civil-rights/virginia-human-rights-act/", linkText:"Virginia DOLI →" },
   { year:"Ongoing", name:"Virginia Code § 51.5 – Disability Services", yearColor:"#F3F3F0", yearText:"#444441", description:"Virginia DARS administers state-funded disability services including vocational rehabilitation, independent living, and assistive technology programs for eligible Virginians with disabilities, including students transitioning from high school.", appliesTo:"Virginia residents with disabilities; vocational rehabilitation available to eligible students.", link:"https://www.vadars.org/", linkText:"DARS →" }
